@@ -2,9 +2,12 @@ import express from "express";
 import axios from "axios";
 
 const app = express();
-const PORT = process.env.PORT || 7000;
 
 // GET /me endpoint
+app.get("/", (req, res) => {
+  res.send("Server is running. Go to /me for your profile info.");
+});
+
 app.get("/me", async (req, res) => {
   try {
     // Fetch a random cat fact
@@ -36,6 +39,8 @@ app.get("/me", async (req, res) => {
     });
   }
 });
+
+const PORT = process.env.PORT || 3000;
 
 // Start server
 app.listen(PORT, () => {
